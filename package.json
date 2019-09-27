@@ -1,0 +1,25 @@
+{
+  "name": "JusticeSociety",
+  "version": "1.0.0",
+  "description": "Project 2",
+  "main": "index.js",
+  "dependencies": {
+    "sequelize": "^5.19.1",
+    "sequelize-cli": "^5.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syedtakbar/JusticeSociety.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/syedtakbar/JusticeSociety/issues"
+  },
+  "homepage": "https://github.com/syedtakbar/JusticeSociety#readme"
+}
