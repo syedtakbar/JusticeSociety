@@ -1,2 +1,0 @@
-# JusticeSociety
-Project 2
