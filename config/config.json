@@ -2,17 +2,17 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "exampledb",
+    "database": "movie_db",
     "host": "localhost",
-    "port": "3306",
+    "port": "8080",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "",
-    "database": "testdb",
+    "password": "root",
+    "database": "moviedb",
     "host": "127.0.0.1",
-    "port": "3306",
+    "port": "3307",
     "dialect": "mysql",
     "logging": false
   },
