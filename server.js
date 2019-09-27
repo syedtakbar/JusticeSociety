@@ -11,7 +11,7 @@ const bodyParser = require('body-parser');
 // EXPRESS CONFIGURATION
 // This sets up the basic properties for our express server
 // ==============================================================================
-const friends = require('./app/data/movie.js');
+const movies = require('./app/data/movie.js');
 //
 // Tells node that we are creating an "express" server
 const app = express();
