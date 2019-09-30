@@ -1,7 +1,7 @@
-let searchBtn = document.getElementById("search");
+let searchRun = document.getElementById("searchBtn");
 const apikey = "79b57024";
 
-searchBtn.addEventListener("click", function() {
+searchRun.addEventListener("click", function() {
   let movie = document.getElementById("input").value;
   const newMovie = movie.toUpperCase();
   console.log("Title: " + newMovie);
@@ -18,7 +18,6 @@ searchBtn.addEventListener("click", function() {
         return response.json();
       })
       .then(function(responseJson) {
-
         //logging response
         console.log(responseJson);
 
