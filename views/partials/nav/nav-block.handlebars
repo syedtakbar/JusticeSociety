@@ -1,0 +1,36 @@
+
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="/">
+    <img id="go-home" border="0" alt="Movie-Review" src="/img/film_logo.png" width="100" height="100">
+  </a>
+  
+  <!-- Links -->
+  <ul class="nav navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="/search" data-search={{search}}>SEARCH </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/post-movie/new" data-post={{post}}>POST</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/users/view" data-account={{account}}>USER</a>
+    </li>
+    {{#if isSigned}}
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">LOGOUT</a>
+      </li>
+    {{else}}
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="modal" data-target="user-info" id="sign-in-modal">SIGNIN</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/signup" data-signup={{signup}}>SIGNUP</a>
+      </li>
+    {{/if}}
+  </ul>
+</nav>
+
+
+{{> modal/signin-block}}
