@@ -27,9 +27,6 @@ const API = {
       method: "DELETE",
       body: JSON.stringify(userdata)
     }).then(res => res.json());
-  },
-  done: function() {
-    return fetch("/").then(res => res.json());
   }
 };
 
@@ -62,7 +59,7 @@ const adduser = function(event) {
     errormsgsection.innerText("**Please fill out entire form**");
   } else {
     API.addUser(newUser).then(function() {
-      API.done();
+      console.log("just executed the event! " + window.location.href);
       window.location.href = "/";
     });
   }
@@ -87,7 +84,6 @@ const updateuser = function(event) {
     errormsgsection.innerText("**Please fill out entire form**");
   } else {
     API.updateUser(updatedUser).then(function() {
-      API.done();
       window.location.href = "/";
     });
   }
@@ -104,7 +100,7 @@ const deleteuser = function(event) {
     errormsgsection.innerText("**Please fill out entire form**");
   } else {
     API.updateUser(deleteUser).then(function() {
-      API.done();
+      window.location.href = "/";
     });
   }
 };

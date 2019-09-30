@@ -1,8 +1,7 @@
-const db = require("../models");
 module.exports = function(app, passport) {
   app.get("/", function(req, res) {
     if (req.isAuthenticated()) {
-      var user = {
+      const user = {
         id: req.session.passport.user,
         isloggedin: req.isAuthenticated()
       };
