@@ -1,29 +1,51 @@
 require("dotenv").config();
-var express = require("express");
-var exphbs = require("express-handlebars");
+const express = require("express");
+const exphbs = require("express-handlebars");
 
-var db = require("./models");
+const passport = require("passport");
+const flash = require("connect-flash");
+const cookieParser = require("cookie-parser");
+const session = require("express-session"); // cookie session
 
-var app = express();
-var PORT = process.env.PORT || 8080;
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+const db = require("./models");
+
+require("./config/pass")(passport);
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(express.static("public"));
 
 // Handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+app.use(express.static("public"));
+
+app.use(
+  session({
+    key: "user_sid",
+    secret: "movie-user",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      expires: 1200000
+    }
+  })
+);
+app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
 // Routes
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+require("./controllers/html-routes")(app, passport);
+require("./controllers/user-controller")(app, passport);
 
-var syncOptions = { force: false };
+const syncOptions = { force: true };
 
-// If running a test, set syncOptions.force to true
-// clearing the `testdb`
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }

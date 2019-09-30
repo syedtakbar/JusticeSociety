@@ -1,5 +1,6 @@
 models/index.js
 node_modules
+public/styles
 **/*.json
 *.json
 readme.md
