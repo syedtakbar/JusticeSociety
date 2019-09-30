@@ -31,7 +31,7 @@ module.exports = function(passport) {
       {
         usernameField: "email",
         passwordField: "user_key",
-        passReqToCallback: true // allows us to pass back the entire request to the callback
+        passReqToCallback: true
       },
       function(req, email, user_key, done) {
         process.nextTick(function() {

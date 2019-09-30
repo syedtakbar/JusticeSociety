@@ -44,7 +44,7 @@ app.use(flash());
 require("./controllers/html-routes")(app, passport);
 require("./controllers/user-controller")(app, passport);
 
-const syncOptions = { force: true };
+const syncOptions = { force: false };
 
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;

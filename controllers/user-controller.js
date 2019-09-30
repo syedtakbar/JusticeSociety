@@ -22,10 +22,6 @@ module.exports = function(app, passport) {
         res.render("maintain-user", user);
       });
     } else {
-      const user = {
-        id: null,
-        isloggedin: req.isAuthenticated()
-      };
       res.redirect("/");
     }
   });

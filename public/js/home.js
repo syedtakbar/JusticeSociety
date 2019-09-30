@@ -28,13 +28,11 @@ const userpassword = document.getElementById("user_password");
 
 const signinmodal = function(event) {
   event.preventDefault();
-  // userinfomodal.modal() ;
   userinfomodal.style.display = "block";
 };
 
 const closemodal = function(event) {
   event.preventDefault();
-  // userinfomodal.modal() ;
   userinfomodal.style.display = "none";
 };
 
@@ -53,7 +51,7 @@ const signin = function(event) {
 
   LOGINAPI.login(user).then(function(results) {
     if (results) {
-      LOGINAPI.viewUser();
+      window.location.href = "/";
     } else {
       userinfomodal.style.display = "none";
       alert("oops something went wrong, please try again!");
