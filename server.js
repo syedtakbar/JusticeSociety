@@ -43,7 +43,7 @@ app.use(flash());
 // Routes
 require("./controllers/html-routes")(app, passport);
 require("./controllers/user-controller")(app, passport);
-require("./controllers/movie-controller")(app, passport);
+// require("./controllers/movie-controller")(app, passport);
 
 const syncOptions = { force: false };
 
