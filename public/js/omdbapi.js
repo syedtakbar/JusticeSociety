@@ -11,7 +11,7 @@ searchBtn.addEventListener("click", function() {
   for (let i = 0; i < movies.length; i++) {
     const queryURL =
       "http://www.omdbapi.com/?apikey=" + apikey + "&t=" + movies[i];
-    const movieDiv = document.getElementById("search-div");
+    const movieDiv = document.getElementById("movieOutput");
     movieDiv.innerHTML = "Title: " + movies[i];
     fetch(queryURL)
       .then(function(response) {
