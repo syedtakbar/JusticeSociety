@@ -1,3 +1,90 @@
-.list-group-item {
-  line-height: 2.5;
+body {
+  background: url("/img/film_back.jpg") repeat center fixed;
+  color: white;
+  background-size: cover;
+  height: 40%;
+}
+
+.jumbotron {
+  background: rgba(0, 0, 0, 0);
+}
+
+.modal {
+  color: black;
+}
+
+.btn {
+  color: white;
+  background: #1d2525;
+  border: 1px solid white;
+}
+
+#user-form,
+.header-wrap,
+#create-form,
+.create-user-wrap {
+  padding: 20px;
+  border-radius: 15px;
+  margin: 20px 0;
+}
+
+#update-err-msg {
+  color: red !important;
+}
+
+#create-err-msg {
+  color: red !important;
+}
+
+#go-home {
+  width: auto;
+  height: 65px;
+}
+
+.container {
+  padding-bottom: 2%;
+  margin-top: 10%;
+  background: rgba(86, 101, 115, 0.6);
+  height: 100%;
+  border-radius: 0.25rem;
+  margin-bottom: 2%;
+}
+
+.card-body {
+  color: white;
+}
+
+.card-img-top {
+  width: 70%;
+  background: white;
+  margin-top: 22px;
+}
+.card-title {
+  font-size: 1.8em;
+}
+
+[data-search="true"] {
+  color: white !important;
+}
+[data-post="true"] {
+  color: white !important;
+}
+[data-user="true"] {
+  color: white !important;
+}
+[data-signup="true"] {
+  color: white !important;
+}
+
+.lead {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.userID h2,
+.header-wrap h1 {
+  text-transform: capitalize;
+}
+hr {
+  background-color: #fff !important;
 }
