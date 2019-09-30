@@ -21,6 +21,7 @@ const signupbtn = document.getElementById("sign-up");
 const gohomebtn = document.getElementById("go-home");
 const userinfomodal = document.getElementById("user-info");
 const signinclosebtn = document.getElementById("sign-in-close");
+const signinXbtn = document.getElementById("sign-in-x");
 
 const email = document.getElementById("email");
 const userpassword = document.getElementById("user_password");
@@ -70,3 +71,4 @@ if (signupbtn) signupbtn.addEventListener("click", signup);
 if (signinbtn) signinbtn.addEventListener("click", signin);
 if (gohomebtn) gohomebtn.addEventListener("click", gohome);
 if (signinclosebtn) signinclosebtn.addEventListener("click", closemodal);
+if (signinXbtn) signinXbtn.addEventListener("click", closemodal);
