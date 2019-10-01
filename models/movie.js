@@ -29,16 +29,25 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     ratings: {
-      type: DataTypes.DECIMAL(8, 2),
-      allowNull: false
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 30]
+      }
     },
     rotten_tomatoes: {
-      type: DataTypes.DECIMAL(8, 2),
-      allowNull: false
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 30]
+      }
     },
     release_date: {
-      type: DataTypes.DATEONLY,
-      allowNull: false
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 30]
+      }
     },
     imdb_link: {
       type: DataTypes.STRING,

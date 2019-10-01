@@ -1,36 +1,35 @@
-
-
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
   <!-- Brand/logo -->
   <a class="navbar-brand" href="/">
-    <img id="go-home" border="0" alt="Movie-Review" src="/img/film_logo.png" width="100" height="100">
+    <img id="go-home" border="0" alt="Movie-Review" src="/img/navIcon.png" width="100" height="100">
   </a>
-  
+
   <!-- Links -->
   <ul class="nav navbar-nav ml-auto">
     <li class="nav-item">
-      <a class="nav-link" href="/movies" data-search={{search}}>LIST </a>
+      <a class="nav-link" href="/movies" data-search={{search}}>Movie List</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/review/new" data-post={{post}}>POST</a>
+      <a class="nav-link" href="/movie/new" data-movie={{movie}}>Add a Movie</a>
+    </li>
+    {{!-- Create logic for pulling up Movie Search functionality (modal? alter maybe) VVV --}}
+    <li class="nav-item">
+      <a class="nav-link" href="/review/new" data-post={{post}}>Add a Review</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/movie/new" data-movie={{movie}}>MOVIE</a>
-    </li>    
-    <li class="nav-item">
-      <a class="nav-link" href="/users/view" data-user={{user}}>USER</a>
+      <a class="nav-link" href="/users/view" data-user={{user}}>Account</a>
     </li>
     {{#if isloggedin}}
-      <li class="nav-item">
-        <a class="nav-link" href="/logout">LOGOUT</a>
-      </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/logout">LOGOUT</a>
+    </li>
     {{else}}
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="modal" data-target="user-info" id="sign-in-modal">SIGNIN</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/signup" data-signup={{signup}}>SIGNUP</a>
-      </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="modal" data-target="user-info" id="sign-in-modal">SIGNIN</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/signup" data-signup={{signup}}>SIGNUP</a>
+    </li>
     {{/if}}
   </ul>
 </nav>

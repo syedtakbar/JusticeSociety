@@ -23,29 +23,29 @@ autofill.addEventListener("click", function() {
 
         //Budget input
         const inputBudget = document.getElementById("inputBudget");
-        inputBudget.placeholder = responseJson.BoxOffice;
+        inputBudget.value = responseJson.BoxOffice;
 
         //Release input
         const inputRelease = document.getElementById("inputRelease");
-        inputRelease.placeholder = responseJson.Released;
+        inputRelease.value = responseJson.Released;
 
         //genre input
         const inputGenre = document.getElementById("inputGenre");
-        inputGenre.placeholder = responseJson.Genre;
+        inputGenre.value = responseJson.Genre;
 
         //Ratings input
         const inputRatings = document.getElementById("inputRatings");
-        inputRatings.placeholder = responseJson.Rated;
+        inputRatings.value = responseJson.Ratings[0].Value;
 
         //Rotten tomatoes input
         const inputRottenTomatoes = document.getElementById(
           "inputRotten_tomatoes"
         );
-        inputRottenTomatoes.placeholder = responseJson.Ratings[1].Value;
+        inputRottenTomatoes.value = responseJson.Ratings[1].Value;
 
         //imdb link
         const inputImdblink = document.getElementById("inputImdb_link");
-        inputImdblink.placeholder = responseJson.Poster;
+        inputImdblink.value = responseJson.Poster;
 
         //plot input
         const inputMoviePlot = document.getElementById("inputMoviePlot");
