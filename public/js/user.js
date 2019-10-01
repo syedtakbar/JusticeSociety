@@ -37,7 +37,6 @@ const inputPassword = document.getElementById("inputPassword");
 const adduserbtn = document.getElementById("add-user");
 const updateuserbtn = document.getElementById("update-user");
 const deleteuserbtn = document.getElementById("delete-user");
-
 const errormsgsection = document.getElementById("create-err-msg");
 
 const adduser = function(event) {

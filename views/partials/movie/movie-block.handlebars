@@ -3,19 +3,19 @@
         <div>
             <h2>{{title}}</h2>
             <h5>{{movie_id}}</h5>
-            <p>plot: {{plot}}</p>
-            <p>release Dates: {{release_date}} </p>
-            <p>buget: {{budger}}</p>
-            <p>rating: {{rating}}</p>
-            <p>rotten tomatoes: {{rotten_tomatoes}}</p>
+            <p>Plot: {{plot}}</p>
+            <p>Release Date: {{release_date}} </p>
+            <p>Budget: {{budger}}</p>
+            <p>Rating: {{rating}}</p>
+            <p>Rotten Tomatoes: {{rotten_tomatoes}}</p>
 
             <div>
                  {{#if Reviews}}
                     <h4>Reviews:</h4>    
                     {{#each Reviews}}
                         <p>User Review: {{reivew_body}}</p>            
-                        <p>User rating: {{user_rating}}</p>
-                        <p>Date watched: {{watch_date}}</p>
+                        <p>User Rating: {{user_rating}}</p>
+                        <p>Date Watched: {{watch_date}}</p>
                     {{/each}}   
                  {{/if}}  
             </div>
