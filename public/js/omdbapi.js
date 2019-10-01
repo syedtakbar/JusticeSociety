@@ -10,7 +10,7 @@ searchRun.addEventListener("click", function() {
   console.log(movies);
   for (let i = 0; i < movies.length; i++) {
     const queryURL =
-      "http://www.omdbapi.com/?apikey=" + apikey + "&t=" + movies[i];
+      "https://www.omdbapi.com/?apikey=" + apikey + "&t=" + movies[i];
     const movieDiv = document.getElementById("movieOutput");
     movieDiv.innerHTML = "Title: " + movies[i];
     fetch(queryURL)
