@@ -1,8 +1,8 @@
-const db = require("../models");
 module.exports = function(app, passport) {
   app.get("/", function(req, res) {
     if (req.isAuthenticated()) {
-      var user = {
+      const user = {
+        userInfo: { first_name: req.cookies.first_name },
         id: req.session.passport.user,
         isloggedin: req.isAuthenticated()
       };
@@ -12,8 +12,16 @@ module.exports = function(app, passport) {
     }
   });
 
+  app.get("/movie/new", function(req, res) {
+    res.render("add-movie");
+  });
+
+  app.get("/review/new", function(req, res) {
+    res.render("post-review");
+  });
+
   app.get("/list-movies", function(req, res) {
-    res.render("search");
+    res.get("/movies");
   });
 
   app.get("/signup", function(req, res) {
@@ -30,9 +38,5 @@ module.exports = function(app, passport) {
     } else {
       res.redirect("/");
     }
-  });
-
-  app.get("/user/:user_id/:user_key", function(req, res) {
-    res.render("add-movies");
   });
 };

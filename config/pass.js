@@ -17,7 +17,7 @@ module.exports = function(passport) {
       }
     }).then(function(user) {
       if (user) {
-        console.log(user);
+        console.log("found user!");
         done(null, user.get());
       } else {
         done(user.errors, null);
@@ -96,6 +96,7 @@ module.exports = function(passport) {
           }
 
           if (user && !user.validPassword(req.body.user_key)) {
+            console.log("Oops! Wrong password.");
             return done(
               null,
               false,

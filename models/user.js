@@ -53,11 +53,5 @@ module.exports = function(sequelize, DataTypes) {
     });
   };
 
-  User.associate = function(models) {
-    User.hasMany(models.Review, {
-      foreignKey: "reviwer_id"
-    });
-  };
-
   return User;
 };

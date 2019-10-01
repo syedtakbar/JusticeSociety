@@ -11,7 +11,7 @@ const API = {
     }).then(res => res.json());
   },
   updateUser: function(userdata) {
-    return fetch("/accounts/" + userdata.user_id + "/" + userdata.user_key, {
+    return fetch("/users/" + userdata.user_id + "/" + userdata.user_key, {
       headers: {
         "Content-Type": "application/json"
       },
@@ -20,16 +20,13 @@ const API = {
     }).then(res => res.json());
   },
   deleteUser: function(userdata) {
-    return fetch("/accounts/" + userdata.user_id + "/" + userdata.user_key, {
+    return fetch("/users/" + userdata.user_id + "/" + userdata.user_key, {
       headers: {
         "Content-Type": "application/json"
       },
       method: "DELETE",
       body: JSON.stringify(userdata)
     }).then(res => res.json());
-  },
-  done: function() {
-    return fetch("/").then(res => res.json());
   }
 };
 
@@ -62,8 +59,7 @@ const adduser = function(event) {
     errormsgsection.innerText("**Please fill out entire form**");
   } else {
     API.addUser(newUser).then(function() {
-      API.done();
-      window.location.href = "/";
+      window.location.href = "/users/view";
     });
   }
 };
@@ -86,9 +82,8 @@ const updateuser = function(event) {
   ) {
     errormsgsection.innerText("**Please fill out entire form**");
   } else {
-    API.updateUser(updatedUser).then(function() {
-      API.done();
-      window.location.href = "/";
+    API.updateUser(updatedUser).then(function(res) {
+      window.location.href = "/users/view";
     });
   }
 };
@@ -103,8 +98,8 @@ const deleteuser = function(event) {
   if (deleteUser.user_key.length <= 0 && deleteUser.email.length <= 0) {
     errormsgsection.innerText("**Please fill out entire form**");
   } else {
-    API.updateUser(deleteUser).then(function() {
-      API.done();
+    API.deleteUser(deleteUser).then(function() {
+      window.location.href = "/users/view";
     });
   }
 };

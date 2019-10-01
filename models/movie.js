@@ -8,10 +8,10 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     plot: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
       validate: {
-        len: [1, 255]
+        len: [1]
       }
     },
     genre: {
@@ -48,15 +48,16 @@ module.exports = function(sequelize, DataTypes) {
 
   Movie.associate = function(models) {
     Movie.belongsTo(models.User, {
-      foreignKey: "user_id"
+      foreignKey: "user_id",
+      allowNull: false
     });
   };
 
   Movie.associate = function(models) {
     Movie.hasMany(models.Review, {
-      foreignKey: "review_id"
+      foreignKey: "movie_id",
+      onDelete: "cascade"
     });
   };
-
   return Movie;
 };

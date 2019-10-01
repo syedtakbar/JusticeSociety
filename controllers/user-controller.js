@@ -2,7 +2,7 @@ const db = require("../models");
 let loginerr;
 module.exports = function(app, passport) {
   app.get("/signup", function(req, res) {
-    res.render("user");
+    res.render("create-user");
   });
 
   app.get("/users/view", function(req, res) {
@@ -19,10 +19,10 @@ module.exports = function(app, passport) {
           id: req.session.passport.user,
           isloggedin: req.isAuthenticated()
         };
+
+        console.log("%%%%%%%%% found it", req.session.passport.user);
         res.render("maintain-user", user);
       });
-    } else {
-      res.redirect("/");
     }
   });
 
@@ -67,20 +67,20 @@ module.exports = function(app, passport) {
     });
   });
 
-  // process the signup form ==============================================
-  //=======================================================================
-
   app.post("/signup", function(req, res, next) {
+    console.log("inside signup");
     passport.authenticate("local-signup", function(err, user, info) {
-      console.log("info", info);
       if (err) {
         console.log("passport err", err);
         return next(err); // will generate a 500 error
       }
-      // Generate a JSON response reflecting authentication status
+
+      console.log("local-signup success! ", info);
+
       if (!user) {
         console.log("user error", user);
-        return res.send({ success: false, message: "authentication failed" });
+        console.log("local-signup failed! ", user);
+        return res.send({ success: false, message: "signup failed" });
       }
 
       // ***********************************************************************
@@ -96,18 +96,18 @@ module.exports = function(app, passport) {
           return next(loginErr);
         }
         //var userId = user.dataValues.id;
+        console.log("local-signup success! ");
         console.log("redirecting....");
 
         res.cookie("first_name", user.first_name);
         res.cookie("user_id", user.uuid);
-        return res.redirect("/users/view");
+        res.redirect("/users/view");
       });
     })(req, res, next);
   });
 
   app.post("/login", function(req, res, next) {
     passport.authenticate("local-login", function(err, user, info) {
-      console.log("\n\n\n########userrrr", user);
       if (err) {
         console.log("passport err", err);
         return next(err); // will generate a 500 error
@@ -130,38 +130,12 @@ module.exports = function(app, passport) {
           console.log("loginerr", loginErr);
           return next(loginErr);
         }
-        //var userId = user.dataValues.id;
         console.log("redirecting....");
         res.cookie("first_name", user.first_name);
+        res.cookie("email", user.email);
         res.cookie("user_id", user.uuid);
-
-        // if (!req.session.userid) {
-        //   var redirectTo = req.session.redirectTo ? req.session.redirectTo : "/";
-        //   delete req.session.redirectTo;
-        //   // is authenticated ?
-        //   res.redirect(redirectTo);
-        // } else {
-        //     next();
-        // }
-        // console.log("=====================signup: ",req.headers.referer);
-        return res.json(true);
-        // return res.redirect("/user");
+        res.json(true);
       });
     })(req, res, next);
   });
-
-  //   app.get("/list-movies/movies", function(req,res){
-  //       db.Movie.findAll({
-  //       }).then(function(result){
-  //           res.render(result);
-  //       });
-  //   });
-
-  // app.put("/list-movies/movies/:user_id/:user_key", function(req,res){
-  //       db.Movie.update({
-
-  //       }).then(function(result){
-  //           res.render(result);
-  //       });
-  //   });
 };
