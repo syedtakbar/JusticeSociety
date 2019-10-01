@@ -14,6 +14,8 @@ const LOGINAPI = {
 
 const signinmodalbtn = document.getElementById("sign-in-modal");
 const signinbtn = document.getElementById("sign-in");
+// Convert searchBtn to display user list of saved movies? Or make default view VVV
+const viewBtn = document.getElementById("view-movies");
 const searchBtn = document.getElementById("search-movie");
 const maintUserBtn = document.getElementById("maintain-user");
 const addMovieBtn = document.getElementById("add-movie");
@@ -40,6 +42,11 @@ const closemodal = function(event) {
   userinfomodal.style.display = "none";
 };
 
+// Logic for navigating to list view here VVV
+const viewSaved = function(event) {
+  event.preventDefault();
+  window.location.href = "/movies";
+};
 const searchModal = function(event) {
   event.preventDefault();
   searchModalbtn.style.display = "block";
@@ -60,6 +67,7 @@ const postReview = function(event) {
   window.location.href = "/review/new";
 };
 
+// Remember to delete this once changed
 const closeSearchmodal = function(event) {
   event.preventDefault();
   searchModalbtn.style.display = "none";
@@ -94,6 +102,8 @@ const gohome = function(event) {
 };
 
 if (signinmodalbtn) signinmodalbtn.addEventListener("click", signinmodal);
+// See above VVV
+if (viewBtn) viewBtn.addEventListener("click", viewSaved);
 if (searchBtn) searchBtn.addEventListener("click", searchModal);
 if (signupbtn) signupbtn.addEventListener("click", signup);
 if (signinbtn) signinbtn.addEventListener("click", signin);

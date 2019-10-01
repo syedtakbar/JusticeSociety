@@ -1,29 +1,30 @@
 <div id="main-container" class="container">
-<div class="jumbotron text-center header-wrap" align="center">    
-    <img src="/img/film_banner.png" alt="banner" class="mb-4" style="width:210px;">
-    <p class="lead">Welcome to <strong> Movie Review App</strong> personal movie review database for everyone!</p>
-    <hr class="my-4">
-    {{#if isloggedin}}
-        <h3>Hello, {{userInfo.first_name}}</h3>
-    {{/if}}
-    <p class="lead">Search or post a movie review</p>
-    <div>
+    <div class="jumbotron text-center header-wrap" align="center">
+        <img src="/img/film_banner.png" alt="banner" class="mb-4" style="width:210px;">
+        <p class="lead">Welcome to <strong> Movie Review App</strong> personal movie review database for everyone!</p>
+        <hr class="my-4">
         {{#if isloggedin}}
-            <button type="submit" id="search-movie" class="btn">Search Movie</button>            
+        <h3>Hello, {{userInfo.first_name}}</h3>
+        {{/if}}
+        <p class="lead">Search or post a movie review</p>
+        <div>
+            {{#if isloggedin}}
+            <button type="submit" id="view-movies" class="btn">View My Movies</button>
+            <button type="submit" id="search-movie" class="btn">Search Movie</button>
             <button type="submit" id="add-movie" class="btn">Add a Movie</button>
             <button type="submit" id="post-review" class="btn">Add a Review</button>
             <button type="submit" id="maintain-user" class="btn">Maintain User</button>
             <a href="/logout"> <button type="btn" class="btn">Logout</button></a>
-        {{else}}
+            {{else}}
             <button type="submit" id="sign-in-modal" class="btn">Sign In</button>
             <button type="submit" id="sign-up" class="btn">Sign Up</button>
-        {{/if}}
-        
-    </div>
-    <div class"container" id="movieOutput"></div>
-</div>
+            {{/if}}
 
-    
+        </div>
+        <div class"container" id="movieOutput"></div>
+    </div>
+
+
 </div>
 
 {{> modal/signin-block}}
