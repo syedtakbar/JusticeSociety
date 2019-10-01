@@ -1,6 +1,6 @@
 let searchRun = document.getElementById("searchBtn");
 const apikey = "79b57024";
-
+//const apikey = process.env.OMDB_KEY;
 searchRun.addEventListener("click", function() {
   let movie = document.getElementById("input").value;
   const newMovie = movie.toUpperCase();
