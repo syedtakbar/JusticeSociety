@@ -53,7 +53,7 @@ const saveReview = function(event) {
   ) {
     reviewrrormsgsection.innerText("**Please fill out entire form**");
   } else {
-    console.log("adding review for moie id: " + newReview.movie_id);
+    console.log("adding review for movie id: " + newReview.movie_id);
     ReviewAPI.addReview(newReview).then(function() {
       console.log("done adding review!!!");
       window.location.href = "/movies";
