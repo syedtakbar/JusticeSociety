@@ -2,7 +2,7 @@ const db = require("../models");
 let loginerr;
 module.exports = function(app, passport) {
   app.get("/signup", function(req, res) {
-    res.render("user");
+    res.render("create-user");
   });
 
   app.get("/users/view", function(req, res) {
@@ -21,10 +21,8 @@ module.exports = function(app, passport) {
         };
 
         console.log("%%%%%%%%% found it", req.session.passport.user);
-        res.json(user);
+        res.render("maintain-user", user);
       });
-    } else {
-      res.json(false);
     }
   });
 
@@ -54,7 +52,7 @@ module.exports = function(app, passport) {
         }
       }
     ).then(function(dbusers) {
-      return res.json(dbusers);
+      res.json(dbusers);
     });
   });
 
@@ -110,7 +108,6 @@ module.exports = function(app, passport) {
 
   app.post("/login", function(req, res, next) {
     passport.authenticate("local-login", function(err, user, info) {
-      console.log("\n\n\n########userrrr", user);
       if (err) {
         console.log("passport err", err);
         return next(err); // will generate a 500 error
@@ -135,6 +132,7 @@ module.exports = function(app, passport) {
         }
         console.log("redirecting....");
         res.cookie("first_name", user.first_name);
+        res.cookie("email", user.email);
         res.cookie("user_id", user.uuid);
         res.json(true);
       });

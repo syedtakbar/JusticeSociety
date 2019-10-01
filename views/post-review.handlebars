@@ -1,0 +1,47 @@
+{{> nav/nav-block search=false post=true user=false signup=false movie=false}}
+
+<div class="container">
+
+  <header class="text-center header-wrap" align="center">
+    <h1>Review</h1>
+    <h3 id="movie-err-msg"></h3>
+    {{#if isloggedin}}
+        <h3>Hello, {{userInfo.first_name}}</h3>
+    {{/if}}
+
+  </header>
+
+  <div class="row justify-content-center">
+    <form class="col-md-6 mx-0">
+
+      <div class="form-group">
+        <label for="category">Select Movie:</label>
+        <select class="custom-select" id="select-movie">
+        </select>
+      </div>
+      <br />
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="inputReviewBody">Body: </label>
+          <textarea name="reivew_body" id="inputReviewBody" placeholder="Review Body" class="form-control" rows="10" id="body"></textarea> 
+        </div>
+      </div>
+
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputUser_rating">User Rating</label>
+          <input type="number" class="form-control" id="inputUser_rating" name="user_rating" placeholder="User Rating">
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="inputWatch_date">Watch Date</label>
+          <input type="date" class="form-control" id="inputWatch_date" name="watch_date" placeholder="Watch Date">
+        </div>
+      </div>
+
+      <button type="submit" id="save-review" class="btn btn-primary">Save</button>
+
+    </form>
+  </div>
+</div>

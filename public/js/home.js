@@ -1,4 +1,4 @@
-console.log("Home.js loaded");
+console.log("home.js loaded");
 
 const LOGINAPI = {
   login: function(userdata) {
@@ -9,15 +9,15 @@ const LOGINAPI = {
       method: "POST",
       body: JSON.stringify(userdata)
     }).then(res => res.json());
-  },
-  viewUser: function() {
-    return fetch("/users/view").then(res => res.json());
   }
 };
 
 const signinmodalbtn = document.getElementById("sign-in-modal");
 const signinbtn = document.getElementById("sign-in");
 const searchBtn = document.getElementById("search-movie");
+const maintUserBtn = document.getElementById("maintain-user");
+const addMovieBtn = document.getElementById("add-movie");
+const postReviewBtn = document.getElementById("post-review");
 const signupbtn = document.getElementById("sign-up");
 const gohomebtn = document.getElementById("go-home");
 const userinfomodal = document.getElementById("user-info");
@@ -42,13 +42,26 @@ const closemodal = function(event) {
 
 const searchModal = function(event) {
   event.preventDefault();
-  // userinfomodal.modal() ;
   searchModalbtn.style.display = "block";
+};
+
+const maintUser = function(event) {
+  event.preventDefault();
+  window.location.href = "/users/view";
+};
+
+const addMovie = function(event) {
+  event.preventDefault();
+  window.location.href = "/movie/new";
+};
+
+const postReview = function(event) {
+  event.preventDefault();
+  window.location.href = "/review/new";
 };
 
 const closeSearchmodal = function(event) {
   event.preventDefault();
-  // userinfomodal.modal() ;
   searchModalbtn.style.display = "none";
 };
 
@@ -89,3 +102,6 @@ if (signinclosebtn) signinclosebtn.addEventListener("click", closemodal);
 if (signinXbtn) signinXbtn.addEventListener("click", closemodal);
 if (searchclosebtn) searchclosebtn.addEventListener("click", closeSearchmodal);
 if (searchXbtn) searchXbtn.addEventListener("click", closeSearchmodal);
+if (maintUserBtn) maintUserBtn.addEventListener("click", maintUser);
+if (addMovieBtn) addMovieBtn.addEventListener("click", addMovie);
+if (postReviewBtn) postReviewBtn.addEventListener("click", postReview);

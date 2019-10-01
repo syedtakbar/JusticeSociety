@@ -41,6 +41,7 @@ body {
   height: 65px;
 }
 
+.movie,
 .container {
   padding-bottom: 2%;
   margin-top: 10%;
@@ -75,7 +76,9 @@ body {
 [data-signup="true"] {
   color: white !important;
 }
-
+[data-movie="true"] {
+  color: white !important;
+}
 .lead {
   font-size: 1.8rem;
   font-weight: 500;

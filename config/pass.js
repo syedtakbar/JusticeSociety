@@ -96,6 +96,7 @@ module.exports = function(passport) {
           }
 
           if (user && !user.validPassword(req.body.user_key)) {
+            console.log("Oops! Wrong password.");
             return done(
               null,
               false,
