@@ -36,6 +36,9 @@ autofill.addEventListener("click", function() {
         //Ratings input
         const inputRatings = document.getElementById("inputRatings");
         inputRatings.value = responseJson.Ratings[0].Value;
+        console.log(responseJson.Ratings[0].Value);
+        let helper = typeof responseJson.Ratings[0].Value;
+        console.log(helper);
 
         //Rotten tomatoes input
         const inputRottenTomatoes = document.getElementById(

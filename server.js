@@ -46,7 +46,7 @@ require("./controllers/user-controller")(app, passport);
 require("./controllers/movie-controller")(app, passport);
 require("./controllers/review-controller")(app, passport);
 
-const syncOptions = { force: false };
+const syncOptions = { force: true };
 
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
