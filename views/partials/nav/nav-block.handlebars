@@ -9,13 +9,16 @@
   <!-- Links -->
   <ul class="nav navbar-nav ml-auto">
     <li class="nav-item">
-      <a class="nav-link" href="/search" data-search={{search}}>SEARCH </a>
+      <a class="nav-link" href="/movies" data-search={{search}}>LIST </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/post-movie/new" data-post={{post}}>POST</a>
+      <a class="nav-link" href="/review/new" data-post={{post}}>POST</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/users/view" data-account={{account}}>USER</a>
+      <a class="nav-link" href="/movie/new" data-movie={{movie}}>MOVIE</a>
+    </li>    
+    <li class="nav-item">
+      <a class="nav-link" href="/users/view" data-user={{user}}>USER</a>
     </li>
     {{#if isloggedin}}
       <li class="nav-item">

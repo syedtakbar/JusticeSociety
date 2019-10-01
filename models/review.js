@@ -16,14 +16,9 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Review.associate = function(models) {
-    Review.belongsTo(models.User, {
-      foreignKey: "user_id"
-    });
-  };
-
-  Review.associate = function(models) {
     Review.belongsTo(models.Movie, {
-      foreignKey: "movie_id"
+      foreignKey: "movie_id",
+      allowNull: false
     });
   };
 

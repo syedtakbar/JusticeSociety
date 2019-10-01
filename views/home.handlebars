@@ -3,11 +3,16 @@
     <img src="/img/film_banner.png" alt="banner" class="mb-4" style="width:210px;">
     <p class="lead">Welcome to <strong> Movie Review App</strong> personal movie review database for everyone!</p>
     <hr class="my-4">
+    {{#if isloggedin}}
+        <h3>Hello, {{userInfo.first_name}}</h3>
+    {{/if}}
     <p class="lead">Search or post a movie review</p>
     <div>
         {{#if isloggedin}}
-            <button type="submit" id="search-movie" class="btn">Search movie</button>
-            <button type="submit" id="post-movie" class="btn">Add a review</button>
+            <button type="submit" id="search-movie" class="btn">Search movie</button>            
+            <button type="submit" id="add-movie" class="btn">Add a movie</button>
+            <button type="submit" id="post-review" class="btn">Add a review</button>
+            <button type="submit" id="maintain-user" class="btn">Mainter user</button>
             <a href="/logout"> <button type="btn" class="btn">Logout</button></a>
         {{else}}
             <button type="submit" id="sign-in-modal" class="btn">Sign In</button>

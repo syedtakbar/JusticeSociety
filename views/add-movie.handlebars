@@ -1,0 +1,71 @@
+{{> nav/nav-block search=false post=false user=false signup=false movie=true}}
+
+<div class="container">
+
+  <header class="text-center header-wrap" align="center">
+    <h1>Add a movie</h1>
+    <h3 id="movie-err-msg"></h3>
+    {{#if isloggedin}}
+        <h3>Hello, {{userInfo.first_name}}</h3>
+    {{/if}}
+
+  </header>
+
+
+  <div class="row justify-content-center">
+    <form class="col-md-6 mx-0">
+
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="inputMovieTitle">Title </label>
+          <input type="text" class="form-control" id="inputMovieTitle" name="title" placeholder="Title">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputBudget">Budget</label>
+          <input type="number" class="form-control" id="inputBudget" name="budget" placeholder="Budget">
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="inputRelease">Release Date</label>
+          <input type="date" class="form-control" id="inputRelease" name="release_date" placeholder="Release Date">
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="inputGenre">Genre</label>
+          <input type="text" class="form-control" id="inputGenre" name="genre" placeholder="Genre">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputRatings">Ratings</label>
+          <input type="number" class="form-control" id="inputRatings" name="ratings" placeholder="Ratings">
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="inputRotten_tomatoes">Rotten tomatoes</label>
+          <input type="number" class="form-control" id="inputRotten_tomatoes" name="rotten_tomatoes" placeholder="Rotten tomatoes">
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="inputImdb_link">IMDB</label>
+          <input type="text" class="form-control" id="inputImdb_link" name="imdb_link" placeholder="IMDB Link">
+        </div>        
+      </div> 
+
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="inputMoviePlot">Plot </label>          
+          <textarea id="inputMoviePlot" placeholder="Plot" class="form-control" rows="10" id="body"></textarea> 
+        </div>
+      </div>
+
+
+      <button type="submit" id="save-movie" class="btn btn-primary">Save</button>
+
+    </form>
+  </div>
+</div>
