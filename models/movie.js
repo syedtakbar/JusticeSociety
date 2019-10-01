@@ -22,8 +22,11 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     budget: {
-      type: DataTypes.DECIMAL(8, 2),
-      allowNull: false
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 30]
+      }
     },
     ratings: {
       type: DataTypes.DECIMAL(8, 2),
