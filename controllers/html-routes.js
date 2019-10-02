@@ -1,3 +1,4 @@
+const db = require("../models");
 module.exports = function(app, passport) {
   app.get("/", function(req, res) {
     if (req.isAuthenticated()) {
@@ -14,23 +15,43 @@ module.exports = function(app, passport) {
   });
 
   app.get("/movie/new", function(req, res) {
-    const user = {
+    const userData = {
       userInfo: { first_name: req.cookies.first_name },
       id: req.session.passport.user,
       isloggedin: req.isAuthenticated()
     };
-    console.log(`add movie function: ${JSON.stringify(user, null, 2)}`);
-    res.render("add-movie", user);
+    console.log(`add movie function: ${JSON.stringify(userData, null, 2)}`);
+    res.render("add-movie", userData);
   });
 
   app.get("/review/new", function(req, res) {
-    const user = {
+    const userData = {
       userInfo: { first_name: req.cookies.first_name },
       id: req.session.passport.user,
       isloggedin: req.isAuthenticated()
     };
-    console.log(`post function: ${JSON.stringify(user, null, 2)}`);
-    res.render("post-review", user);
+    console.log(`post function: ${JSON.stringify(userData, null, 2)}`);
+    if (req.isAuthenticated()) {
+      db.Movie.findAll({
+        include: [{ model: db.Review, required: false, attributes: [] }],
+        where: {
+          user_id: req.session.passport.user,
+          "$Reviews.id$": null
+        }
+      }).then(function(dbMovies) {
+        if (dbMovies.length > 0) {
+          console.log(
+            `hitting post-review: ${JSON.stringify(dbMovies, null, 2)}`
+          );
+          res.render("post-review", userData);
+        } else {
+          console.log(
+            `hitting add-movie: ${JSON.stringify(dbMovies, null, 2)}`
+          );
+          res.render("add-movie", userData);
+        }
+      });
+    }
   });
 
   app.get("/list-movies", function(req, res) {
