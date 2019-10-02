@@ -39,6 +39,20 @@ module.exports = function(app, passport) {
     }
   });
 
+  app.get("/movies/for-review", function(req, res) {
+    if (req.isAuthenticated()) {
+      db.Movie.findAll({
+        include: [{ model: db.Review, required: false, attributes: [] }],
+        where: {
+          user_id: req.session.passport.user,
+          "$Reviews.id$": null
+        }
+      }).then(function(dbMovies) {
+        res.json(dbMovies);
+      });
+    }
+  });
+
   app.post("/movie", function(req, res) {
     db.Movie.create({
       title: req.body.title,
