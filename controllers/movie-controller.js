@@ -35,6 +35,12 @@ module.exports = function(app, passport) {
       ratings: req.body.ratings,
       imdb_link: req.body.imdb_link,
       genre: req.body.genre,
+      actor: req.body.actor,
+      production: req.body.production,
+      director: req.body.director,
+      country: req.body.country,
+      awards: req.body.awards,
+      imdb_ratings: req.body.imdb_ratings,
       budget: req.body.budget,
       rotten_tomatoes: req.body.rotten_tomatoes,
       user_id: req.session.passport.user
