@@ -20,7 +20,7 @@ module.exports = function(passport) {
         console.log("found user!");
         done(null, user.get());
       } else {
-        done(user.errors, null);
+        done(null, { msg: "no user found, must have been deleted" });
       }
     });
   });
