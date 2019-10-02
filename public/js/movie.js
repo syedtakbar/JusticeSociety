@@ -40,16 +40,16 @@ const saveMovie = function(event) {
   };
 
   if (
-    newMovie.title.length <= 0 &&
-    newMovie.plot.length <= 0 &&
-    newMovie.budget.length <= 0 &&
-    newMovie.genre.length <= 0 &&
-    newMovie.release_date.length <= 0 &&
-    newMovie.rotten_tomatoes.length <= 0 &&
-    newMovie.imdb_link.length <= 0 &&
+    newMovie.title.length <= 0 ||
+    newMovie.plot.length <= 0 ||
+    newMovie.budget.length <= 0 ||
+    newMovie.genre.length <= 0 ||
+    newMovie.release_date.length <= 0 ||
+    newMovie.rotten_tomatoes.length <= 0 ||
+    newMovie.imdb_link.length <= 0 ||
     newMovie.ratings.length <= 0
   ) {
-    movieerrormsgsection.innerText("**Please fill out entire form**");
+    movieerrormsgsection.innerText = "**Please fill out entire form**";
   } else {
     console.log("adding movie!!!");
     MovieAPI.addMovie(newMovie).then(function() {

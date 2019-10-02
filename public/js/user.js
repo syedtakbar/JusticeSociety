@@ -51,12 +51,12 @@ const adduser = function(event) {
   };
 
   if (
-    newUser.user_key.length <= 0 &&
-    newUser.email.length <= 0 &&
-    newUser.last_name.length <= 0 &&
+    newUser.user_key.length <= 0 ||
+    newUser.email.length <= 0 ||
+    newUser.last_name.length <= 0 ||
     newUser.first_name.length <= 0
   ) {
-    errormsgsection.innerText("**Please fill out entire form**");
+    errormsgsection.innerText = "**Please fill out entire form**";
   } else {
     API.addUser(newUser).then(function() {
       window.location.href = "/";
