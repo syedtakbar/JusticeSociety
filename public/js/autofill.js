@@ -49,6 +49,8 @@ autofill.addEventListener("click", function() {
         //plot input
         const inputMoviePlot = document.getElementById("inputMoviePlot");
         inputMoviePlot.value = responseJson.Plot;
+
+        //actors
       });
   }
 });
