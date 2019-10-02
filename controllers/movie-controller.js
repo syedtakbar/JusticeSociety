@@ -1,4 +1,5 @@
 const db = require("../models");
+const axios = require("axios");
 
 module.exports = function(app, passport) {
   app.get("/movies", function(req, res) {
@@ -9,7 +10,18 @@ module.exports = function(app, passport) {
           user_id: req.session.passport.user
         }
       }).then(function(dbMovies) {
-        res.render("movie-list", { movies: dbMovies });
+        const user = {
+          userInfo: { first_name: req.cookies.first_name },
+          id: req.session.passport.user,
+          isloggedin: req.isAuthenticated()
+        };
+        console.log(`list-movies function: ${JSON.stringify(user, null, 2)}`);
+
+        res.render("movie-list", {
+          movies: dbMovies,
+          user: user,
+          isloggedin: true
+        });
       });
     }
   });
@@ -47,5 +59,24 @@ module.exports = function(app, passport) {
     }).then(function(dbMovie) {
       res.json(dbMovie);
     });
+  });
+
+  app.get("/movie/omdb/:title", function(req, res) {
+    if (req.isAuthenticated()) {
+      const queryURL =
+        "https://www.omdbapi.com/?apikey=" +
+        process.env.OMDB_KEY +
+        "&t=" +
+        req.body.title;
+
+      axios
+        .get(queryURL)
+        .then(function(response) {
+          res.json(response.data);
+        })
+        .catch(function(error) {
+          console.error(error);
+        });
+    }
   });
 };

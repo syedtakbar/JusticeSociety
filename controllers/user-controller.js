@@ -1,12 +1,12 @@
 const db = require("../models");
-let loginerr;
+
 module.exports = function(app, passport) {
   app.get("/signup", function(req, res) {
     res.render("create-user");
   });
 
   app.get("/users/view", function(req, res) {
-    console.log("%%%%%%%%% is logged in", req.isAuthenticated());
+    console.log(`isAuthenticated:  ${req.isAuthenticated()}`);
 
     if (req.isAuthenticated()) {
       db.User.findOne({
@@ -20,35 +20,38 @@ module.exports = function(app, passport) {
           isloggedin: req.isAuthenticated()
         };
 
-        console.log("%%%%%%%%% found it", req.session.passport.user);
+        console.log(`user session:  ${req.session.passport.user}`);
         res.render("maintain-user", user);
       });
     }
   });
 
-  app.delete("/users/:user_id/:user_key", function(req, res) {
+  app.delete("/users/:email", function(req, res) {
     db.User.destroy({
       where: {
-        id: req.params.user_id,
-        user_key: req.params.userkey
+        email: req.params.email
       }
     }).then(function(dbUsers) {
       res.json(dbUsers);
     });
   });
 
-  app.put("/users/:user_id/:user_key", function(req, res) {
+  app.put("/users/:email", function(req, res) {
+    console.log(
+      `executing update for : ${req.params.email} and ${req.body.user_key}`
+    );
     db.User.update(
       {
         first_name: req.body.first_name,
         last_name: req.body.last_name,
-        email: req.body.email,
-        user_key: req.body.user_key
+        user_key:
+          req.body.user_key.length > 8
+            ? req.body.user_key
+            : db.User.generateHash(req.body.user_key)
       },
       {
         where: {
-          id: req.params.user_id,
-          user_key: req.params.user_key
+          email: req.params.email
         }
       }
     ).then(function(dbusers) {
@@ -56,13 +59,14 @@ module.exports = function(app, passport) {
     });
   });
 
-  // logout of user user
   app.get("/logout", function(req, res) {
     req.session.destroy(function(err) {
       req.logout();
       res.clearCookie("user_sid");
       res.clearCookie("first_name");
+      res.clearCookie("email");
       res.clearCookie("user_id");
+      res.clearCookie("isloggedin");
       res.redirect("/");
     });
   });
@@ -92,16 +96,17 @@ module.exports = function(app, passport) {
 
       req.login(user, loginErr => {
         if (loginErr) {
-          console.log("loginerr", loginerr);
           return next(loginErr);
         }
-        //var userId = user.dataValues.id;
+
         console.log("local-signup success! ");
-        console.log("redirecting....");
 
         res.cookie("first_name", user.first_name);
+        res.cookie("email", user.email);
         res.cookie("user_id", user.uuid);
-        res.redirect("/users/view");
+        res.cookie("isloggedin", req.isAuthenticated());
+
+        res.send({ success: false, message: "signup successful" });
       });
     })(req, res, next);
   });
@@ -110,10 +115,8 @@ module.exports = function(app, passport) {
     passport.authenticate("local-login", function(err, user, info) {
       if (err) {
         console.log("passport err", err);
-        return next(err); // will generate a 500 error
+        return next(err);
       }
-      // Generate a JSON response reflecting authentication status
-
       if (!user) {
         return res.send({ success: false, message: "authentication failed" });
       }
@@ -134,7 +137,9 @@ module.exports = function(app, passport) {
         res.cookie("first_name", user.first_name);
         res.cookie("email", user.email);
         res.cookie("user_id", user.uuid);
-        res.json(true);
+        res.cookie("isloggedin", req.isAuthenticated());
+        console.log("local-login success! ");
+        res.send({ success: false, message: "login successful" });
       });
     })(req, res, next);
   });
