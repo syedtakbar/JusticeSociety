@@ -55,6 +55,34 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [1, 255]
       }
+    },
+    actor: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 255]
+      }
+    },
+    director: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 255]
+      }
+    },
+    country: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 255]
+      }
+    },
+    awards: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 255]
+      }
     }
   });
 
