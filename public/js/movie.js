@@ -20,6 +20,10 @@ const inputGenre = document.getElementById("inputGenre");
 const inputRatings = document.getElementById("inputRatings");
 const inputRotten_tomatoes = document.getElementById("inputRotten_tomatoes");
 const inputMoviePlot = document.getElementById("inputMoviePlot");
+const inputActor = document.getElementById("inputActor");
+const inputDirector = document.getElementById("inputDirector");
+const inputAwards = document.getElementById("inputAwards");
+const inputCountry = document.getElementById("inputCountry");
 
 const saveMovieBtn = document.getElementById("save-movie");
 
@@ -36,7 +40,11 @@ const saveMovie = function(event) {
     ratings: inputRatings.value.trim(),
     rotten_tomatoes: inputRotten_tomatoes.value.trim(),
     plot: inputMoviePlot.value.trim(),
-    imdb_link: inputImdb_link.value.trim()
+    imdb_link: inputImdb_link.value.trim(),
+    actor: inputActor.value.trim(),
+    director: inputDirector.value.trim(),
+    awards: inputAwards.value.trim(),
+    country: inputCountry.value.trim()
   };
 
   if (
@@ -47,6 +55,10 @@ const saveMovie = function(event) {
     newMovie.release_date.length <= 0 ||
     newMovie.rotten_tomatoes.length <= 0 ||
     newMovie.imdb_link.length <= 0 ||
+    newMovie.actor.length <= 0 ||
+    newMovie.director.length <= 0 ||
+    newMovie.country.length <= 0 ||
+    newMovie.awards.length <= 0 ||
     newMovie.ratings.length <= 0
   ) {
     movieerrormsgsection.innerText = "**Please fill out entire form**";
