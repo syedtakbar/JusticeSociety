@@ -1,6 +1,4 @@
 let autofill = document.getElementById("autofill");
-const apikey1 = "79b57024";
-//const apikey1 = process.env.OMDB_KEY;
 
 autofill.addEventListener("click", function() {
   let movie = document.getElementById("inputMovieTitle").value;
