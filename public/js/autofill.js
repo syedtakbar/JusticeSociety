@@ -8,8 +8,7 @@ autofill.addEventListener("click", function() {
   movies.push(movie);
   console.log(movies);
   for (let i = 0; i < movies.length; i++) {
-    const queryURL =
-      "https://www.omdbapi.com/?apikey=" + apikey1 + "&t=" + movies[i];
+    const queryURL = "/movie/omdb/" + movies[i];
 
     // const movieDiv = document.getElementById("movieOutput");
     // movieDiv.innerHTML = "Title: " + movies[i];

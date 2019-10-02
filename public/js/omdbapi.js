@@ -1,6 +1,5 @@
 let searchRun = document.getElementById("searchBtn");
-const apikey = "79b57024";
-//const apikey = process.env.OMDB_KEY;
+
 searchRun.addEventListener("click", function() {
   let movie = document.getElementById("input").value;
   const newMovie = movie.toUpperCase();
@@ -9,8 +8,7 @@ searchRun.addEventListener("click", function() {
   movies.push(newMovie);
   console.log(movies);
   for (let i = 0; i < movies.length; i++) {
-    const queryURL =
-      "https://www.omdbapi.com/?apikey=" + apikey + "&t=" + movies[i];
+    const queryURL = "/movie/omdb/" + movies[i];
     const movieDiv = document.getElementById("movieOutput");
     movieDiv.innerHTML = "Title: " + movies[i];
     fetch(queryURL)
