@@ -9,7 +9,8 @@
     <h3>Welcome, {{userInfo.first_name}}</h3>
     <h5 id="account-number" data-accountemail="{{userInfo.email}}">User Email: {{userInfo.email}}</h5>
   </div>
-  <h3 id="update-err-msg"></h3>
+  <hr>
+  <h4 id="create-err-msg"></h4>
 </header>
 
 
@@ -17,19 +18,19 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputFirst">First Name</label>
-      <input type="text" class="form-control" id="inputFirst" value="{{userInfo.first_name}}" placeholder="First name">
+      <input type="text" class="form-control" id="inputFirst" value="{{userInfo.first_name}}" placeholder="First name" minlength="1" maxlength="255" required>
     </div>
 
     <div class="form-group col-md-6">
       <label for="inputLast">Last Name</label>
-      <input type="text" class="form-control" id="inputLast" value="{{userInfo.last_name}}" placeholder="Last name">
+      <input type="text" class="form-control" id="inputLast" value="{{userInfo.last_name}}" placeholder="Last name" minlength="1" maxlength="255" required>
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputPassword">Password</label>
-      <input type="password" class="form-control" id="inputPassword" value="{{userInfo.user_key}}">
+      <input type="password" class="form-control" id="inputPassword" value="{{userInfo.user_key}}" minlength="8" maxlength="8" required>
     </div>
   </div>
   
@@ -44,7 +45,7 @@
     
 
 </form>
-<div class="modal" id="delete-user-modal" tabindex="-1" role="dialog">
+{{!-- <div class="modal" id="delete-user-modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -75,5 +76,5 @@
         </div>
     </div>
 
-</div>
+</div> --}}
 </div>

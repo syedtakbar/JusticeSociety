@@ -28,10 +28,9 @@ body {
   margin: 20px 0;
 }
 
-#update-err-msg {
-  color: red !important;
-}
-
+#update-err-msg,
+#movie-err-msg,
+#review-err-msg,
 #create-err-msg {
   color: red !important;
 }
@@ -77,6 +76,9 @@ body {
   color: white !important;
 }
 [data-movie="true"] {
+  color: white !important;
+}
+[data-list="true"] {
   color: white !important;
 }
 .lead {

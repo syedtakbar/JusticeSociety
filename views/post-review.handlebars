@@ -3,12 +3,12 @@
 <div class="container">
 
   <header class="text-center header-wrap" align="center">
-    <h1>Review</h1>
-    <h3 id="movie-err-msg"></h3>
+    <h1>Add a review</h1>    
     {{#if isloggedin}}
         <h3>Hello, {{userInfo.first_name}}</h3>
     {{/if}}
-
+    <hr>
+    <h4 id="review-err-msg"></h4>
   </header>
 
   <div class="row justify-content-center">
@@ -16,14 +16,14 @@
 
       <div class="form-group">
         <label for="category">Select Movie:</label>
-        <select class="custom-select" id="select-movie">
+        <select class="custom-select" id="select-movie" required>
         </select>
       </div>
       <br />
       <div class="form-row">
         <div class="form-group col-md-12">
           <label for="inputReviewBody">Body: </label>
-          <textarea name="reivew_body" id="inputReviewBody" placeholder="Review Body" class="form-control" rows="10" id="body"></textarea> 
+          <textarea name="reivew_body" id="inputReviewBody" placeholder="Review Body" class="form-control" rows="5" id="body"></textarea> 
         </div>
       </div>
 
@@ -31,12 +31,12 @@
       <div class="form-row">
         <div class="form-group col-md-4">
           <label for="inputUser_rating">User Rating</label>
-          <input type="number" min="0" max="10" step="0.1" class="form-control" id="inputUser_rating" name="user_rating" placeholder="User Rating">
+          <input type="number" min="0" max="10" step="1" class="form-control" id="inputUser_rating" name="user_rating" placeholder="User Rating" required>
         </div>
 
         <div class="form-group col-md-4">
           <label for="inputWatch_date">Watch Date: </label>
-          <input type="date" class="form-control" id="inputWatch_date" name="watch_date" placeholder="Watch Date">
+          <input type="date" class="form-control" id="inputWatch_date" name="watch_date" placeholder="Watch Date" required>
         </div>
       </div>
 
