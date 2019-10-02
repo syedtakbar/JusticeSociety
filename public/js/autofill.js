@@ -8,8 +8,7 @@ autofill.addEventListener("click", function() {
   movies.push(movie);
   console.log(movies);
   for (let i = 0; i < movies.length; i++) {
-    const queryURL =
-      "https://www.omdbapi.com/?apikey=" + apikey1 + "&t=" + movies[i];
+    const queryURL = "/movie/omdb/" + movies[i];
 
     // const movieDiv = document.getElementById("movieOutput");
     // movieDiv.innerHTML = "Title: " + movies[i];
@@ -50,6 +49,22 @@ autofill.addEventListener("click", function() {
         //plot input
         const inputMoviePlot = document.getElementById("inputMoviePlot");
         inputMoviePlot.value = responseJson.Plot;
+
+        //actors
+        const inputActor = document.getElementById("inputActor");
+        inputActor.value = responseJson.Actors;
+
+        //countries
+        const inputCountry = document.getElementById("inputCountry");
+        inputCountry.value = responseJson.Country;
+
+        //directors
+        const inputDirector = document.getElementById("inputDirector");
+        inputDirector.value = responseJson.Director;
+
+        //awards
+        const inputAwards = document.getElementById("inputAwards");
+        inputAwards.value = responseJson.Awards;
       });
   }
 });

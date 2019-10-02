@@ -62,7 +62,6 @@ module.exports = function(app, passport) {
       imdb_link: req.body.imdb_link,
       genre: req.body.genre,
       actor: req.body.actor,
-      production: req.body.production,
       director: req.body.director,
       country: req.body.country,
       awards: req.body.awards,
@@ -81,7 +80,7 @@ module.exports = function(app, passport) {
         "https://www.omdbapi.com/?apikey=" +
         process.env.OMDB_KEY +
         "&t=" +
-        req.body.title;
+        req.params.title;
 
       axios
         .get(queryURL)
