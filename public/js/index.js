@@ -1,3 +1,7 @@
+const express = require("express");
+const app = express();
+app.use(express.static("views/images"));
+
 // Get references to page elements
 const exampleTextEl = document.getElementById("example-text");
 const exampleDescriptionEl = document.getElementById("example-description");
@@ -19,7 +23,7 @@ const API = {
     return fetch("/api/examples").then(res => res.json());
   },
   deleteExample: function(id) {
-    return fetch("/api/examples/" + id,{
+    return fetch("/api/examples/" + id, {
       method: "DELETE"
     }).then(res => res.json);
   }
@@ -29,17 +33,17 @@ const API = {
 const refreshExamples = function() {
   API.getExamples().then(function(data) {
     const exampleEls = data.map(function(example) {
-      const aEl = document.createElement("a")
+      const aEl = document.createElement("a");
       aEl.innerHTML = example.text;
       aEl.setAttribute("href", "/example/" + example.id);
 
-      const liEl = document.createElement("li")
-      liEl.classList.add("list-group-item")
-      liEl.setAttribute("data-id", example.id)
+      const liEl = document.createElement("li");
+      liEl.classList.add("list-group-item");
+      liEl.setAttribute("data-id", example.id);
       liEl.append(aEl);
 
-      const buttonEl = document.createElement("button")
-      buttonEl.classList.add("btn","btn-danger", "float-right", "delete")
+      const buttonEl = document.createElement("button");
+      buttonEl.classList.add("btn", "btn-danger", "float-right", "delete");
       buttonEl.innerHTML = "ｘ";
       buttonEl.addEventListener("click", handleDeleteBtnClick);
 
@@ -80,7 +84,7 @@ const handleFormSubmit = function(event) {
 // Remove the example from the db and refresh the list
 const handleDeleteBtnClick = function(event) {
   const idToDelete = event.target.parentElement.getAttribute("data-id");
-  debugger
+  debugger;
   API.deleteExample(idToDelete).then(function() {
     refreshExamples();
   });
@@ -89,5 +93,5 @@ const handleDeleteBtnClick = function(event) {
 // Add event listeners to the submit and delete buttons
 submitBtnEl.addEventListener("click", handleFormSubmit);
 document.querySelectorAll(".delete").forEach(btn => {
-  btn.addEventListener("click", handleDeleteBtnClick)
-})
+  btn.addEventListener("click", handleDeleteBtnClick);
+});
