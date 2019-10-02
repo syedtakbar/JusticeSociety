@@ -1,11 +1,11 @@
-{{> nav/nav-block search=false post=false user=false signup=false movie=true list=false}} 
+{{> nav/nav-block search=false post=false user=false signup=false movie=true list=false}}
 
 <div class="container">
 
   <header class="text-center header-wrap" align="center">
-    <h1>Add a movie</h1>    
+    <h1>Add a movie</h1>
     {{#if isloggedin}}
-        <h3>Hello, {{userInfo.first_name}}</h3>
+    <h3>Hello, {{userInfo.first_name}}</h3>
     {{/if}}
     <hr>
     <h4 id="movie-err-msg"></h4>
@@ -16,55 +16,91 @@
       <div class="form-row">
         <div class="form-group col-md-12">
           <label for="inputMovieTitle">Title </label>
-          <input type="text" class="form-control" id="inputMovieTitle" name="title" placeholder="Title"  minlength="1" maxlength="255" required>
+          <input type="text" class="form-control" id="inputMovieTitle" name="title" placeholder="Title" minlength="1"
+            maxlength="255" required>
           <button type="button" class="btn btn-primary" id="autofill">Autofill</button>
         </div>
       </div>
 
       <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputActor">Actors</label>
+          <input type="text" class="form-control" id="inputActor" name="actor" placeholder="Actor" minlength="1"
+            maxlength="255" required>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="inputDirector">Director</label>
+          <input type="text" class="form-control" id="inputDirector" name="director" placeholder="Director"
+            minlength="1" maxlength="255" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputAwards">Awards</label>
+          <input type="text" class="form-control" id="inputAwards" name="awards" placeholder="Awards" minlength="1"
+            maxlength="255" required>
+        </div>
+      
+
+      <div class="form-group col-md-6">
+        <label for="inputCountry">Country</label>
+        <input type="text" class="form-control" id="inputCountry" name="country" placeholder="Country" minlength="1"
+          maxlength="255" required>
+      </div>
+      </div>
+
+      <div class="form-row">
         <div class="form-group col-md-4">
           <label for="inputBudget">Budget</label>
-          <input type="text" class="form-control" id="inputBudget" name="budget" placeholder="Budget" minlength="1" maxlength="255" required>
+          <input type="text" class="form-control" id="inputBudget" name="budget" placeholder="Budget" minlength="1"
+            maxlength="255" required>
         </div>
 
         <div class="form-group col-md-4">
           <label for="inputRelease">Release Date</label>
-          <input type="text" class="form-control" id="inputRelease" name="release_date" placeholder="Release Date" minlength="1" maxlength="255" required>
+          <input type="text" class="form-control" id="inputRelease" name="release_date" placeholder="Release Date"
+            minlength="1" maxlength="255" required>
         </div>
 
         <div class="form-group col-md-4">
           <label for="inputGenre">Genre</label>
-          <input type="text" class="form-control" id="inputGenre" name="genre" placeholder="Genre" minlength="1" maxlength="255" required>
+          <input type="text" class="form-control" id="inputGenre" name="genre" placeholder="Genre" minlength="1"
+            maxlength="255" required>
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group col-md-4">
           <label for="inputRatings">Ratings</label>
-          <input type="text" class="form-control" id="inputRatings" name="ratings" placeholder="Ratings" minlength="1" maxlength="255" required>
+          <input type="text" class="form-control" id="inputRatings" name="ratings" placeholder="Ratings" minlength="1"
+            maxlength="255" required>
         </div>
 
         <div class="form-group col-md-4">
           <label for="inputRotten_tomatoes">Rotten tomatoes</label>
-          <input type="text" class="form-control" id="inputRotten_tomatoes" name="rotten_tomatoes" placeholder="Rotten Tomatoes" minlength="1" maxlength="255" required>
+          <input type="text" class="form-control" id="inputRotten_tomatoes" name="rotten_tomatoes"
+            placeholder="Rotten Tomatoes" minlength="1" maxlength="255" required>
         </div>
 
         <div class="form-group col-md-4">
           <label for="inputImdb_link">IMDB Link</label>
-          <input type="text" class="form-control" id="inputImdb_link" name="imdb_link" placeholder="IMDB Link" minlength="1" maxlength="255" required>
-        </div>        
-      </div> 
+          <input type="text" class="form-control" id="inputImdb_link" name="imdb_link" placeholder="IMDB Link"
+            minlength="1" maxlength="255" required>
+        </div>
+      </div>
 
       <div class="form-row">
         <div class="form-group col-md-12">
-          <label for="inputMoviePlot">Plot</label>          
-          <textarea id="inputMoviePlot" placeholder="Plot" class="form-control" rows="5" id="body" minlength="1" ></textarea> 
+          <label for="inputMoviePlot">Plot</label>
+          <textarea id="inputMoviePlot" placeholder="Plot" class="form-control" rows="5" id="body"
+            minlength="1"></textarea>
         </div>
       </div>
 
 
       <button type="submit" id="save-movie" class="btn btn-primary">Save</button>
 
-    </form>    
+    </form>
   </div>
 </div>
