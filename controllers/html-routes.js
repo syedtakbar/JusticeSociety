@@ -6,6 +6,7 @@ module.exports = function(app, passport) {
         id: req.session.passport.user,
         isloggedin: req.isAuthenticated()
       };
+      console.log(`home function: ${JSON.stringify(user, null, 2)}`);
       res.render("home", user);
     } else {
       res.render("home");
@@ -13,11 +14,23 @@ module.exports = function(app, passport) {
   });
 
   app.get("/movie/new", function(req, res) {
-    res.render("add-movie");
+    const user = {
+      userInfo: { first_name: req.cookies.first_name },
+      id: req.session.passport.user,
+      isloggedin: req.isAuthenticated()
+    };
+    console.log(`add movie function: ${JSON.stringify(user, null, 2)}`);
+    res.render("add-movie", user);
   });
 
   app.get("/review/new", function(req, res) {
-    res.render("post-review");
+    const user = {
+      userInfo: { first_name: req.cookies.first_name },
+      id: req.session.passport.user,
+      isloggedin: req.isAuthenticated()
+    };
+    console.log(`post function: ${JSON.stringify(user, null, 2)}`);
+    res.render("post-review", user);
   });
 
   app.get("/list-movies", function(req, res) {

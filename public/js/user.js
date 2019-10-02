@@ -11,7 +11,7 @@ const API = {
     }).then(res => res.json());
   },
   updateUser: function(userdata) {
-    return fetch("/users/" + userdata.user_id + "/" + userdata.user_key, {
+    return fetch("/users/" + userdata.email, {
       headers: {
         "Content-Type": "application/json"
       },
@@ -20,7 +20,7 @@ const API = {
     }).then(res => res.json());
   },
   deleteUser: function(userdata) {
-    return fetch("/users/" + userdata.user_id + "/" + userdata.user_key, {
+    return fetch("/users/" + userdata.email, {
       headers: {
         "Content-Type": "application/json"
       },
@@ -30,6 +30,7 @@ const API = {
   }
 };
 
+const accountNumber = document.getElementById("account-number");
 const inputFirst = document.getElementById("inputFirst");
 const inputLast = document.getElementById("inputLast");
 const inputEmail = document.getElementById("inputEmail");
@@ -58,7 +59,7 @@ const adduser = function(event) {
     errormsgsection.innerText("**Please fill out entire form**");
   } else {
     API.addUser(newUser).then(function() {
-      window.location.href = "/users/view";
+      window.location.href = "/";
     });
   }
 };
@@ -69,7 +70,7 @@ const updateuser = function(event) {
   const updatedUser = {
     first_name: inputFirst.value.trim(),
     last_name: inputLast.value.trim(),
-    email: inputEmail.value.trim(),
+    email: accountNumber.getAttribute("data-accountemail"),
     user_key: inputPassword.value.trim()
   };
 
@@ -82,7 +83,7 @@ const updateuser = function(event) {
     errormsgsection.innerText("**Please fill out entire form**");
   } else {
     API.updateUser(updatedUser).then(function(res) {
-      window.location.href = "/users/view";
+      window.location.href = "/";
     });
   }
 };
@@ -90,7 +91,7 @@ const updateuser = function(event) {
 const deleteuser = function(event) {
   event.preventDefault();
   const deleteUser = {
-    deleteUser: inputFirst.value.trim(),
+    email: accountNumber.getAttribute("data-accountemail"),
     user_key: inputPassword.value.trim()
   };
 
@@ -98,7 +99,7 @@ const deleteuser = function(event) {
     errormsgsection.innerText("**Please fill out entire form**");
   } else {
     API.deleteUser(deleteUser).then(function() {
-      window.location.href = "/users/view";
+      window.location.href = "/logout";
     });
   }
 };
