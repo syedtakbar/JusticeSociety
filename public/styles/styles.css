@@ -85,7 +85,9 @@ body {
   font-size: 1.8rem;
   font-weight: 500;
 }
-
+.well {
+  padding: 1.4%;
+}
 .userID h2,
 .header-wrap h1 {
   text-transform: capitalize;
