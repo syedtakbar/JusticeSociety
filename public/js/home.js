@@ -91,7 +91,6 @@ const signin = function(event) {
       window.location.href = "/";
     } else {
       userinfomodal.style.display = "none";
-      alert("oops something went wrong, please try again!");
     }
   });
 };

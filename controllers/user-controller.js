@@ -20,7 +20,6 @@ module.exports = function(app, passport) {
           isloggedin: req.isAuthenticated()
         };
 
-        console.log(`user session:  ${req.session.passport.user}`);
         res.render("maintain-user", user);
       });
     }
@@ -72,42 +71,37 @@ module.exports = function(app, passport) {
   });
 
   app.post("/signup", function(req, res, next) {
-    console.log("inside signup");
     passport.authenticate("local-signup", function(err, user, info) {
       if (err) {
         console.log("passport err", err);
-        return next(err); // will generate a 500 error
+        return next(err);
       }
-
-      console.log("local-signup success! ", info);
 
       if (!user) {
-        console.log("user error", user);
-        console.log("local-signup failed! ", user);
-        return res.send({ success: false, message: "signup failed" });
+        res.send({ success: false, message: "signup failed" });
+      } else {
+        // ***********************************************************************
+        // "Note that when using a custom callback, it becomes the application"s
+        // responsibility to establish a session (by calling req.login()) and send
+        // a response."
+        // Source: http://passportjs.org/docs
+        // ***********************************************************************
+
+        req.login(user, loginErr => {
+          if (loginErr) {
+            return next(loginErr);
+          }
+
+          console.log("local-signup success! ");
+
+          res.cookie("first_name", user.first_name);
+          res.cookie("email", user.email);
+          res.cookie("user_id", user.uuid);
+          res.cookie("isloggedin", req.isAuthenticated());
+
+          res.send({ success: false, message: "signup successful" });
+        });
       }
-
-      // ***********************************************************************
-      // "Note that when using a custom callback, it becomes the application"s
-      // responsibility to establish a session (by calling req.login()) and send
-      // a response."
-      // Source: http://passportjs.org/docs
-      // ***********************************************************************
-
-      req.login(user, loginErr => {
-        if (loginErr) {
-          return next(loginErr);
-        }
-
-        console.log("local-signup success! ");
-
-        res.cookie("first_name", user.first_name);
-        res.cookie("email", user.email);
-        res.cookie("user_id", user.uuid);
-        res.cookie("isloggedin", req.isAuthenticated());
-
-        res.send({ success: false, message: "signup successful" });
-      });
     })(req, res, next);
   });
 
@@ -118,29 +112,29 @@ module.exports = function(app, passport) {
         return next(err);
       }
       if (!user) {
-        return res.send({ success: false, message: "authentication failed" });
+        res.json({ success: false, message: "authentication failed" });
+      } else {
+        // ***********************************************************************
+        // "Note that when using a custom callback, it becomes the application"s
+        // responsibility to establish a session (by calling req.login()) and send
+        // a response."
+        // Source: http://passportjs.org/docs
+        // ***********************************************************************
+
+        req.login(user, loginErr => {
+          if (loginErr) {
+            console.log("loginerr", loginErr);
+            return next(loginErr);
+          }
+          console.log("redirecting....");
+          res.cookie("first_name", user.first_name);
+          res.cookie("email", user.email);
+          res.cookie("user_id", user.uuid);
+          res.cookie("isloggedin", req.isAuthenticated());
+          console.log("local-login success! ");
+          res.send({ success: false, message: "login successful" });
+        });
       }
-
-      // ***********************************************************************
-      // "Note that when using a custom callback, it becomes the application"s
-      // responsibility to establish a session (by calling req.login()) and send
-      // a response."
-      // Source: http://passportjs.org/docs
-      // ***********************************************************************
-
-      req.login(user, loginErr => {
-        if (loginErr) {
-          console.log("loginerr", loginErr);
-          return next(loginErr);
-        }
-        console.log("redirecting....");
-        res.cookie("first_name", user.first_name);
-        res.cookie("email", user.email);
-        res.cookie("user_id", user.uuid);
-        res.cookie("isloggedin", req.isAuthenticated());
-        console.log("local-login success! ");
-        res.send({ success: false, message: "login successful" });
-      });
     })(req, res, next);
   });
 };
