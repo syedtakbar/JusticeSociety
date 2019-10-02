@@ -81,7 +81,7 @@ module.exports = function(app, passport) {
         "https://www.omdbapi.com/?apikey=" +
         process.env.OMDB_KEY +
         "&t=" +
-        req.body.title;
+        req.params.title;
 
       axios
         .get(queryURL)
