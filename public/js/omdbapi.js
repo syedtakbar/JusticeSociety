@@ -48,6 +48,24 @@ searchRun.addEventListener("click", function() {
         genreDiv.innerHTML = "Genre: " + responseJson.Genre;
         movieDiv.append(genreDiv);
         console.log(responseJson.Genre);
+
+        //directors
+        const directorsDiv = document.createElement("div");
+        directorsDiv.innerHTML = "Directors: " + responseJson.Director;
+        movieDiv.append(directorsDiv);
+        console.log(responseJson.Director);
+
+        //awards
+        const awardsDiv = document.createElement("div");
+        awardsDiv.innerHTML = "Awards: " + responseJson.Awards;
+        movieDiv.append(awardsDiv);
+        console.log(responseJson.Awards);
+
+        //countries
+        const countryDiv = document.createElement("div");
+        countryDiv.innerHTML = "Country: " + responseJson.Country;
+        movieDiv.append(countryDiv);
+        console.log(responseJson.Country);
       });
   }
 });

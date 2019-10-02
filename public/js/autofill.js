@@ -51,6 +51,20 @@ autofill.addEventListener("click", function() {
         inputMoviePlot.value = responseJson.Plot;
 
         //actors
+        const inputActor = document.getElementById("inputActor");
+        inputActor.value = responseJson.Actors;
+
+        //countries
+        const inputCountry = document.getElementById("inputCountry");
+        inputCountry.value = responseJson.Country;
+
+        //directors
+        const inputDirector = document.getElementById("inputDirector");
+        inputDirector.value = responseJson.Director;
+
+        //awards
+        const inputAwards = document.getElementById("inputAwards");
+        inputAwards.value = responseJson.Awards;
       });
   }
 });
