@@ -4,19 +4,15 @@ autofill.addEventListener("click", function() {
   let movie = document.getElementById("inputMovieTitle").value;
   const movies = [];
   movies.push(movie);
-  console.log(movies);
   for (let i = 0; i < movies.length; i++) {
     const queryURL = "/movie/omdb/" + movies[i];
 
-    // const movieDiv = document.getElementById("movieOutput");
-    // movieDiv.innerHTML = "Title: " + movies[i];
     fetch(queryURL)
       .then(function(response) {
         return response.json();
       })
       .then(function(responseJson) {
         //logging response
-        console.log(responseJson);
 
         //Budget input
         const inputBudget = document.getElementById("inputBudget");
